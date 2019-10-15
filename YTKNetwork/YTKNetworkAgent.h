@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///  Get the shared agent.
 + (YTKNetworkAgent *)sharedAgent;
++ (void)destroy;
 
 ///  Add request to session and start it.
 - (void)addRequest:(YTKBaseRequest *)request;

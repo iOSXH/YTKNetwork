@@ -49,13 +49,18 @@
     NSIndexSet *_allStatusCodes;
 }
 
+static id sharedInstance = nil;
+static dispatch_once_t onceToken;
 + (YTKNetworkAgent *)sharedAgent {
-    static id sharedInstance = nil;
-    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
+}
+
++ (void)destroy{
+    onceToken = 0;
+    sharedInstance = nil;
 }
 
 - (instancetype)init {
